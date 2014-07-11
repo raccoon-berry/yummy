@@ -20,7 +20,7 @@ public class MyActivity extends Activity {
     public void changeLabel(View view) {
         //Log.v("TEST", "Clicked");
         TextView tv = (TextView)findViewById(R.id.myLabel);
-                tv.setText("Changed!");
+                tv.setText("Changed!!");
     }
 
     @Override

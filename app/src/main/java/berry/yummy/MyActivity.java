@@ -1,6 +1,7 @@
 package berry.yummy;
 
 import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -15,6 +16,10 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+        // 初回時のみデータベース作成
+        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+        sqLiteDatabase.close();
     }
 
     public void changeLabel(View view) {

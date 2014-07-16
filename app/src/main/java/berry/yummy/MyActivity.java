@@ -1,12 +1,14 @@
 package berry.yummy;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -20,12 +22,16 @@ public class MyActivity extends Activity {
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
         sqLiteDatabase.close();
-    }
 
-    public void changeLabel(View view) {
-        //Log.v("TEST", "Clicked");
-        TextView tv = (TextView)findViewById(R.id.myLabel);
-                tv.setText("Changed!!!!!!");
+        // いただきますボタン
+        Button startButton = (Button) findViewById(R.id.start_button);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyActivity.this, EatingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

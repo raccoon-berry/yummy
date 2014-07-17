@@ -32,6 +32,15 @@ public class MyActivity extends Activity {
                 startActivity(intent);
             }
         });
+        // Yummyの記録ボタン
+        Button historyButton = (Button) findViewById(R.id.history_button);
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyActivity.this, HistoryActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

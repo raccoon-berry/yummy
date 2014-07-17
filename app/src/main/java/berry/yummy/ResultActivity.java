@@ -8,20 +8,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import berry.yummy.R;
-
-public class EatingActivity extends Activity {
+public class ResultActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eating);
-        // ごちそうさまボタン
-        Button endButton = (Button) findViewById(R.id.end_button);
-        endButton.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_result);
+        // TOPへボタン
+        Button topButton = (Button) findViewById(R.id.to_top_button);
+        topButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EatingActivity.this, ResultActivity.class);
+                Intent intent = new Intent(ResultActivity.this, MyActivity.class);
                 startActivity(intent);
             }
         });
@@ -31,7 +29,7 @@ public class EatingActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.eating, menu);
+        getMenuInflater().inflate(R.menu.result, menu);
         return true;
     }
 

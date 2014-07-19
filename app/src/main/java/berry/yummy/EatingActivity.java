@@ -319,8 +319,8 @@ public class EatingActivity extends Activity {
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DatabaseHelper.EATING_CREATED_AT, now);
-        values.put(DatabaseHelper.EATING_START_TIME, now);
+        values.put(DatabaseHelper.EATING_UPDATED_AT, now);
+        values.put(DatabaseHelper.EATING_END_TIME, now);
         values.put(DatabaseHelper.EATING_YUMMY_COUNT, yummyCount);
         String whereStr = "id = " + String.valueOf(eatingId);
         long result = -1;

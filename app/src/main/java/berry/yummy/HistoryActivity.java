@@ -2,11 +2,18 @@ package berry.yummy;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import berry.yummy.R;
 
@@ -25,7 +32,22 @@ public class HistoryActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        // データ取得
+//        List menus = getMenus();
     }
+
+//    private List getMenus() {
+//        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+//        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+//        String getMenuQuery = "select * from menus join eatings on menus.eating_id = eatings.id order by eatings.yummy_count desc;";
+//        Cursor c = sqLiteDatabase.rawQuery(getMenuQuery, null);
+//        List menus = new ArrayList();
+//        while (c.moveToNext()) {
+//            Map row = new HashMap<String, String>();
+//            row.put("")
+//        }
+//    }
 
 
     @Override

@@ -15,5 +15,11 @@
     <string name="result_max_yummy_msg">最高においしいごはんだったよ！</string>
     <string name="result_min_yummy_msg">あんまりおいしいごはんじゃなかったみたい…</string>
     <string name="result_normal_yummy_msg">おいしかったよ</string>
+    <string name="result_add_menu_title">メニューを記録する</string>
+    <string name="menu_text">メニュー</string>
+    <string name="memo_text">メモ</string>
+    <string name="add_menu_ok_button">記録する</string>
+    <string name="add_menu_cancel_button">キャンセル</string>
+    <string name="add_menu_msg"> を記録しました</string>
 
 </resources>

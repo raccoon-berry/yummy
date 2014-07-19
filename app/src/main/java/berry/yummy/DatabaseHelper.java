@@ -20,6 +20,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String EATING_YUMMY_COUNT = "yummy_count";
     public static final String EATING_CREATED_AT = "created_at";
     public static final String EATING_UPDATED_AT = "updated_at";
+    public static final String MENU_TABLE = "menus";
+    public static final String MENU_NAME = "name";
+    public static final String MENU_MEMO = "memo";
+    public static final String MENU_EATING_ID = "eating_id";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

@@ -36,6 +36,13 @@ public class ResultActivity extends Activity {
         TextView starText = (TextView) findViewById(R.id.result_star_text);
         starText.setText(starStr);
 
+        TextView msgText = (TextView) findViewById(R.id.result_msg_text);
+        if (starCount == 1) {
+            msgText.setText(R.string.result_min_yummy_msg);
+        } else if (starCount == 5) {
+            msgText.setText(R.string.result_max_yummy_msg);
+        }
+
         // TOPへボタン
         Button topButton = (Button) findViewById(R.id.to_top_button);
         topButton.setOnClickListener(new View.OnClickListener() {

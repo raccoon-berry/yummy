@@ -67,13 +67,13 @@ public class EatingActivity extends Activity {
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DatabaseHelper.EATING_ID, eatingId);
         values.put(DatabaseHelper.EATING_CREATED_AT, now);
         values.put(DatabaseHelper.EATING_START_TIME, now);
         values.put(DatabaseHelper.EATING_YUMMY_COUNT, yummyCount);
+        String whereStr = "id = " + String.valueOf(eatingId);
         long result = -1;
         if (sqLiteDatabase != null) {
-            result = sqLiteDatabase.insert(DatabaseHelper.EATING_TABLE, null, values);
+            result = sqLiteDatabase.update(DatabaseHelper.EATING_TABLE, values, whereStr, null);
         }
         return result;
     }

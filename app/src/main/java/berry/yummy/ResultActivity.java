@@ -7,13 +7,35 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class ResultActivity extends Activity {
+
+    // TODO 星5つになる回数、設定ファイルで持ちたい
+    public static int MAX_COUNT = 10;
+    private long eatingId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+        // インテントからeatingIdとyummyCountを取り出す
+        Intent intent = getIntent();
+        this.eatingId = intent.getLongExtra("eatingId", 0);
+        int yummyCount = intent.getIntExtra("yummyCount", 0);
+
+        // yummy度の算出
+        int starCount = yummyCount / (MAX_COUNT / 5);
+        if (starCount > 5) {
+            starCount = 5;
+        }
+        String starStr = "";
+        for (int i = 0; i < starCount; i++) {
+            starStr += "★";
+        }
+        TextView starText = (TextView) findViewById(R.id.result_star_text);
+        starText.setText(starStr);
+
         // TOPへボタン
         Button topButton = (Button) findViewById(R.id.to_top_button);
         topButton.setOnClickListener(new View.OnClickListener() {
@@ -24,7 +46,6 @@ public class ResultActivity extends Activity {
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

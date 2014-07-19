@@ -14,4 +14,41 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="62dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@+string/result_top_text"
+        android:id="@+id/result_top_text"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/result_star_text"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/result_top_text"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@+string/result_normal_yummy_msg"
+        android:id="@+id/result_msg_text"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button"
+        android:layout_above="@+id/to_top_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp" />
+
 </RelativeLayout>

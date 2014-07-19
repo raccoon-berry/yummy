@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+
 
 public class MyActivity extends Activity {
 
@@ -22,7 +24,7 @@ public class MyActivity extends Activity {
         sqLiteDatabase.close();
 
         // いただきますボタン
-        Button startButton = (Button) findViewById(R.id.start_button);
+        BootstrapButton startButton = (BootstrapButton) findViewById(R.id.start_button);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,7 +33,7 @@ public class MyActivity extends Activity {
             }
         });
         // Yummyの記録ボタン
-        Button historyButton = (Button) findViewById(R.id.history_button);
+        BootstrapButton historyButton = (BootstrapButton) findViewById(R.id.history_button);
         historyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

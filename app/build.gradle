@@ -21,5 +21,6 @@ android {
 }
 
 dependencies {
+    compile project(':AndroidBootstrap')
     compile fileTree(include: ['*.jar'], dir: 'libs')
 }

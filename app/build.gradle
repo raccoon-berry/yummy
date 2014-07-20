@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 15
-    buildToolsVersion '20.0.0'
+    compileSdkVersion 19
+    buildToolsVersion '19.1.0'
     defaultConfig {
         applicationId 'berry.yummy'
         minSdkVersion 15
-        targetSdkVersion 15
+        targetSdkVersion 19
         versionCode 1
         versionName '1.0'
     }
@@ -21,6 +21,7 @@ android {
 }
 
 dependencies {
+    compile files('jar/FSRServiceOpen.jar')
     compile project(':AndroidBootstrap')
     compile fileTree(include: ['*.jar'], dir: 'libs')
 }

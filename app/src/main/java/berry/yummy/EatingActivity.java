@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.fuetrek.fsr.FSRServiceEnum.BackendType;
 import com.fuetrek.fsr.FSRServiceEnum.EventType;
@@ -53,7 +52,7 @@ class SyncObj{
 public class EatingActivity extends Activity {
 
     private Handler handler_;
-    private TextView textResult_;
+//    private TextView textResult_;
     private fsrController controller_ = new fsrController();
     private String[] yummies = {"美味","うま","うめ","おいし","旨","最高"};
 
@@ -89,19 +88,11 @@ public class EatingActivity extends Activity {
                 if (controller_.result_ == null) {
                     return;
                 }
-                textResult_.append("***Result***" + System.getProperty("line.separator"));
                 String target = controller_.result_;
                 int count = 0;
                 for (String yummy : yummies) {
                     count += (target.length() - target.replaceAll(yummy, "").length()) / yummy.length();
                 }
-                textResult_.append(
-                        target +
-                                System.getProperty("line.separator") +
-                                count +
-                                "yummy" +
-                                System.getProperty("line.separator") +
-                                System.getProperty("line.separator"));
                 // 結果を更新
                 // FIXME これはテストコードです。
                 int yummyCount = 20;
@@ -264,11 +255,7 @@ public class EatingActivity extends Activity {
         setContentView(R.layout.activity_eating);
 
         handler_ = new Handler();
-        textResult_ = (TextView) findViewById(R.id.text_result);
         activity_ = this;
-
-        textResult_.setTextSize(28.0f);
-        textResult_.setText("");
 
         controller_ = new fsrController();
         controller_.start();

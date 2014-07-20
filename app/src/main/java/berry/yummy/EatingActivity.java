@@ -70,6 +70,7 @@ public class EatingActivity extends Activity {
     private ProgressView prview = null;
 
     private int yummyCount;
+    private int currentStarCount = 1;
 
     private String[] star1_texts = new String[] {"今日のごはんもおいしいかな～", "もぐもぐ", "これはいったいなんですか？", "未知のあじ～♪", "ふがふが"};
     private String[] star2_texts = new String[] {"今日のごはんもおいしいかな～", "もぐもぐ", "これはいったいなんですか？", "未知のあじ～♪", "ふがふが"};
@@ -382,17 +383,20 @@ public class EatingActivity extends Activity {
 
     public void reDrawProgress(){
         prview = (ProgressView) findViewById(R.id.progress_view);
-        prview.invalidate();
 
         // ここで画面を切り替える処理を入れる
         ImageView eatingGirl =(ImageView) findViewById(R.id.eating_girl);
         BootstrapButton fikidashi = (BootstrapButton) findViewById(R.id.fukidashi);
         int starCount = this.yummyCount / (ResultActivity.MAX_COUNT / 5);
+        for (int i = 0; i < starCount - currentStarCount; i++) {
+            prview.invalidate();
+        }
         if (starCount > 5) {
             starCount = 5;
         } else if (starCount == 0) {
             starCount = 1;
         }
+        currentStarCount = starCount;
         if (starCount == 1) {
             fikidashi.setText(star1_texts[textPosition]);
         } else if (starCount == 2) {
@@ -412,6 +416,7 @@ public class EatingActivity extends Activity {
         if (textPosition > 4) {
             textPosition = 0;
         }
-
+        Log.d("currentStar", String.valueOf(currentStarCount));
+        Log.d("yummyCount", String.valueOf(yummyCount));
     }
 }

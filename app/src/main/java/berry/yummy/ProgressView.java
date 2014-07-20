@@ -20,13 +20,13 @@ public class ProgressView extends View {
     private int top = 500;
     private int incrementPoint = 250;
     private int maxTop = 30;
-    private String baseColor = "#f0e68c";
+    private String baseColor = "#ff8c00";
     private int imagePath = R.drawable.smile_girl;
 
     private float prgBarStart = 700;
     private float prgBarEnd = 30;
     private float prgBarLeft = 370;
-    private String prgBarColor = "#228b22";
+    private String prgBarColor = "#ff4500";
 
     private int starLeft = 20;
     private int starTop = 700;

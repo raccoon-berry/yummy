@@ -382,10 +382,7 @@ public class EatingActivity extends Activity {
 
     public void reDrawProgress(){
         prview = (ProgressView) findViewById(R.id.progress_view);
-        //ループだとinvalidateが効かない...
-//        for(int i=0; i < 10; i++){
-            prview.invalidate();
-//        }
+        prview.invalidate();
 
         // ここで画面を切り替える処理を入れる
         ImageView eatingGirl =(ImageView) findViewById(R.id.eating_girl);

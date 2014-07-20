@@ -28,6 +28,18 @@ public class ProgressView extends View {
     private float prgBarLeft = 370;
     private String prgBarColor = "#228b22";
 
+    private int starLeft = 20;
+    private int starTop = 700;
+    private int starPath = R.drawable.star;
+
+    private int progressGrade = 5;//5つに分類
+
+    private int barWidth = 60;//プログレスバー幅
+    private float barX = 50;//プログレスバーX軸始点
+    private int maxBarX = 650;//プログレスバーX軸終点
+    private float barY = 80;//プログレスバーY軸始点
+    private float tmpBarX = 50;
+
     public ProgressView(Context context){
         super(context);
         initial(context);
@@ -46,6 +58,7 @@ public class ProgressView extends View {
     public void initial(Context context){
         Resources res = context.getResources();
         prgImage1 = BitmapFactory.decodeResource(res, imagePath);
+        prgImage2 = BitmapFactory.decodeResource(res, starPath);
 
     }
 
@@ -55,24 +68,21 @@ public class ProgressView extends View {
         super.onDraw(c);
         c.drawColor(Color.parseColor(baseColor));
 
-        //進捗バー
-        Paint pLine = new Paint();
-        pLine.setStrokeWidth(30);
-        pLine.setColor(Color.parseColor(prgBarColor));
-        c.drawLine(prgBarLeft, prgBarStart, prgBarLeft, prgBarEnd, pLine);
+        Paint pBaseLine = new Paint();
+        pBaseLine.setStrokeWidth(barWidth);
+        pBaseLine.setColor(Color.WHITE);
+        c.drawLine(barX, barY, maxBarX, barY, pBaseLine);
 
-        //進捗画像
-        Paint p = new Paint();
-        if(prgImage1 != null) {
-            if (top > maxTop) {
-                c.drawBitmap(prgImage1, left, top, p);
-                //inValidateのfor文が効かないときので代替手段
-                //top = top - 1;
-                top = top - incrementPoint;
-            } else {
-                c.drawBitmap(prgImage1, left, maxTop, p);
-            }
+        Paint pLine = new Paint();
+        pLine.setStrokeWidth(barWidth);
+        pLine.setColor(Color.parseColor(prgBarColor));
+
+        c.drawLine(barX, barY, tmpBarX, barY, pLine);
+        if(tmpBarX < maxBarX){
+            //tmpBarX = tmpBarX + (maxBarX - barX) / progressGrade ;
+            tmpBarX = tmpBarX + 120;
         }
+
     }
 
 }

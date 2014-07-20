@@ -96,18 +96,20 @@ public class EatingActivity extends Activity {
                     count += (target.length() - target.replaceAll(yummy, "").length()) / yummy.length();
                 }
 
-                //進捗アイコンを表示
-                reDrawProgress();
+                if (controller_.carryOn) {
+                    //進捗アイコンを表示
+                    reDrawProgress();
+                } else {
 //停止時の処理
 //                // 結果を更新
 //                // FIXME これはテストコードです。
-//                int yummyCount = 20;
-//                updateEating(yummyCount, eatingId);
-//                Intent intent = new Intent(EatingActivity.this, ResultActivity.class);
-//                intent.putExtra("eatingId", eatingId);
-//                intent.putExtra("yummyCount", yummyCount);
-//                startActivity(intent);
-
+                    int yummyCount = 20;
+                    updateEating(yummyCount, eatingId);
+                    Intent intent = new Intent(EatingActivity.this, ResultActivity.class);
+                    intent.putExtra("eatingId", eatingId);
+                    intent.putExtra("yummyCount", yummyCount);
+                    startActivity(intent);
+                }
             }
         };
 
@@ -367,8 +369,8 @@ public class EatingActivity extends Activity {
     public void reDrawProgress(){
         prview = (ProgressView) findViewById(R.id.progress_view);
         //ループだとinvalidateが効かない...
-        for(int i=0; i < 10; i++){
+//        for(int i=0; i < 10; i++){
             prview.invalidate();
-        }
+//        }
     }
 }

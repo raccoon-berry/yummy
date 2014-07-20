@@ -64,6 +64,7 @@
                 android:layout_height="85dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/normal_girl_face"
+                android:id="@+id/result_girl_face"
                 android:layout_margin="20dp"/>
 
             <TextView

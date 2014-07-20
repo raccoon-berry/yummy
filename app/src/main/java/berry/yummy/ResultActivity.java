@@ -13,9 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.beardedhen.androidbootstrap.BootstrapButton;
 
 public class ResultActivity extends Activity {
 
@@ -37,12 +40,13 @@ public class ResultActivity extends Activity {
         if (starCount > 5) {
             starCount = 5;
         }
-        String starStr = "";
-        for (int i = 0; i < starCount; i++) {
-            starStr += "★";
+        LinearLayout starsLayout = (LinearLayout) findViewById(R.id.stars);
+        for (int i = 0; i < starCount - 1; i++) {
+            ImageView image = new ImageView(this);
+            image.setImageResource(R.drawable.heart145);
+//            image.setScaleType(ImageView.ScaleType.CENTER);
+            starsLayout.addView(image);
         }
-        TextView starText = (TextView) findViewById(R.id.result_star_text);
-        starText.setText(starStr);
 
         TextView msgText = (TextView) findViewById(R.id.result_msg_text);
         if (starCount == 1) {
@@ -52,7 +56,7 @@ public class ResultActivity extends Activity {
         }
 
         // TOPへボタン
-        Button topButton = (Button) findViewById(R.id.to_top_button);
+        BootstrapButton topButton = (BootstrapButton) findViewById(R.id.to_top_button);
         topButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +66,7 @@ public class ResultActivity extends Activity {
         });
 
         // メニュー記録ボタン
-        Button addButton = (Button) findViewById(R.id.result_add_button);
+        BootstrapButton addButton = (BootstrapButton) findViewById(R.id.result_add_button);
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ResultActivity.this);

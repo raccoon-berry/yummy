@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,6 +67,8 @@ public class EatingActivity extends Activity {
 
     private ProgressView prview = null;
 
+    private int yummyCount;
+
     // FSRServiceの待ち処理でブロッキングする実装としている為、
     // UI更新を妨げないよう別スレッドとしている。
     public class fsrController extends Thread implements FSRServiceEventListener {
@@ -91,9 +94,8 @@ public class EatingActivity extends Activity {
                     return;
                 }
                 String target = controller_.result_;
-                int count = 0;
                 for (String yummy : yummies) {
-                    count += (target.length() - target.replaceAll(yummy, "").length()) / yummy.length();
+                    yummyCount += (target.length() - target.replaceAll(yummy, "").length()) / yummy.length();
                 }
 
                 if (controller_.carryOn) {
@@ -103,7 +105,8 @@ public class EatingActivity extends Activity {
 //停止時の処理
 //                // 結果を更新
 //                // FIXME これはテストコードです。
-                    int yummyCount = 20;
+//                    int yummyCount = 20;
+                    Log.d("yummyCount", String.valueOf(yummyCount));
                     updateEating(yummyCount, eatingId);
                     Intent intent = new Intent(EatingActivity.this, ResultActivity.class);
                     intent.putExtra("eatingId", eatingId);
@@ -267,6 +270,7 @@ public class EatingActivity extends Activity {
 
         controller_ = new fsrController();
         controller_.start();
+        yummyCount = 0;
 
         // ごちそうさまボタン
         Button endButton = (Button) findViewById(R.id.end_button);

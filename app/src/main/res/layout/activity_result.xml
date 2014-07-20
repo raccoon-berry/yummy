@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f0e68c"
+    android:background="#ff8c00"
     tools:context="berry.yummy.ResultActivity">
 
     <Button
@@ -22,7 +22,9 @@
         android:id="@+id/result_top_text"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp" />
+        android:layout_marginTop="49dp"
+        android:textColor="#ffffe0"
+        android:textStyle="bold"/>
 
     <TextView
         android:layout_width="wrap_content"

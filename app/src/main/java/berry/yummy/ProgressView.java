@@ -68,10 +68,6 @@ public class ProgressView extends View {
         super.onDraw(c);
         c.drawColor(Color.parseColor(baseColor));
 
-        //擬似プログレスばー
-//        for(prgPoint; prgPoint <= oldPrgPoint + 300; prfPoint++){
-//
-//        }
         Paint pBaseLine = new Paint();
         pBaseLine.setStrokeWidth(barWidth);
         pBaseLine.setColor(Color.WHITE);
@@ -87,46 +83,6 @@ public class ProgressView extends View {
             tmpBarX = tmpBarX + 120;
         }
 
-
-//        //星画像
-//        Paint pStar = new Paint();
-//        //1つ星
-//        if(prgImage2 != null) {
-//            int minStarTop = starTop - 100;
-//            c.drawBitmap(prgImage2, starLeft+60, minStarTop, pStar);
-//        }
-//        //2つ星
-//        if(prgImage2 != null) {
-//            int midStarTop = starTop - 300;
-//            c.drawBitmap(prgImage2, starLeft, midStarTop, pStar);
-//            c.drawBitmap(prgImage2, starLeft+80, midStarTop, pStar);
-//        }
-//        //3つ星
-//        if(prgImage2 != null) {
-//            int maxStarTop = starTop - 600;
-//            c.drawBitmap(prgImage2, starLeft, maxStarTop, pStar);
-//            c.drawBitmap(prgImage2, starLeft+60, maxStarTop, pStar);
-//            c.drawBitmap(prgImage2, starLeft+120, maxStarTop, pStar);
-//        }
-//
-//        //進捗バー
-//        Paint pLine = new Paint();
-//        pLine.setStrokeWidth(30);
-//        pLine.setColor(Color.parseColor(prgBarColor));
-//        c.drawLine(prgBarLeft, prgBarStart, prgBarLeft, prgBarEnd, pLine);
-//
-//        //進捗画像
-//        Paint p = new Paint();
-//        if(prgImage1 != null) {
-//            if (top > maxTop) {
-//                c.drawBitmap(prgImage1, left, top, p);
-//                //inValidateのfor文が効かないときので代替手段
-//                //top = top - 1;
-//                top = top - incrementPoint;
-//            } else {
-//                c.drawBitmap(prgImage1, left, maxTop, p);
-//            }
-//        }
     }
 
 }

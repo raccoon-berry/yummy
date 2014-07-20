@@ -367,8 +367,8 @@ public class EatingActivity extends Activity {
     public void reDrawProgress(){
         prview = (ProgressView) findViewById(R.id.progress_view);
         //ループだとinvalidateが効かない...
-        for(int i=0; i < 10; i++){
+        //for(int i=0; i < 10; i++){
             prview.invalidate();
-        }
+        //}
     }
 }

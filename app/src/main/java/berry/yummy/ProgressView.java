@@ -11,20 +11,18 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-/**
- * Created by kitune on 2014/07/19.
- */
+//public class ProgressView extends View {
 public class ProgressView extends View {
 
     private Bitmap prgImage1 = null;
     private Bitmap prgImage2 = null;
 
-    private int left = 200;
-    private int top = 400;
-    private int maxTop = 10;
+    private int left = 300;
+    private int top = 600;
+    private int incrementPoint = 100;
+    private int maxTop = 30;
     private String baseColor = "#f0e68c";
-    private Canvas oldCanvas = null;
-    private int imagePath = R.drawable.ic_launcher;
+    private int imagePath = R.drawable.smile_girl_small;
 
     public ProgressView(Context context){
         super(context);
@@ -55,8 +53,6 @@ public class ProgressView extends View {
 
         //進捗バー
 
-        //進捗単位画像
-
 
         //進捗画像
         Paint p = new Paint();
@@ -65,7 +61,7 @@ public class ProgressView extends View {
                 c.drawBitmap(prgImage1, left, top, p);
 //inValidateのfor文が効かないときの代替手段
 //                top = top - 1;
-                top = top - 20;
+                top = top - incrementPoint;
             } else {
                 c.drawBitmap(prgImage1, left, maxTop, p);
             }

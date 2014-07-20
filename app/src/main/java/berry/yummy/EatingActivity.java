@@ -64,6 +64,8 @@ public class EatingActivity extends Activity {
 
     private long eatingId;
 
+    private ProgressView prview = null;
+
     // FSRServiceの待ち処理でブロッキングする実装としている為、
     // UI更新を妨げないよう別スレッドとしている。
     public class fsrController extends Thread implements FSRServiceEventListener {
@@ -93,14 +95,18 @@ public class EatingActivity extends Activity {
                 for (String yummy : yummies) {
                     count += (target.length() - target.replaceAll(yummy, "").length()) / yummy.length();
                 }
-                // 結果を更新
-                // FIXME これはテストコードです。
-                int yummyCount = 20;
-                updateEating(yummyCount, eatingId);
-                Intent intent = new Intent(EatingActivity.this, ResultActivity.class);
-                intent.putExtra("eatingId", eatingId);
-                intent.putExtra("yummyCount", yummyCount);
-                startActivity(intent);
+
+                //進捗アイコンを表示
+                reDrawProgress();
+//停止時の処理
+//                // 結果を更新
+//                // FIXME これはテストコードです。
+//                int yummyCount = 20;
+//                updateEating(yummyCount, eatingId);
+//                Intent intent = new Intent(EatingActivity.this, ResultActivity.class);
+//                intent.putExtra("eatingId", eatingId);
+//                intent.putExtra("yummyCount", yummyCount);
+//                startActivity(intent);
 
             }
         };
@@ -284,6 +290,9 @@ public class EatingActivity extends Activity {
         if (result != -1) {
             this.eatingId = result;
         }
+
+        // デフォルト進捗
+        reDrawProgress();
     }
 
     private long insertEating() {
@@ -353,5 +362,13 @@ public class EatingActivity extends Activity {
         });
         ad.create();
         ad.show();
+    }
+
+    public void reDrawProgress(){
+        prview = (ProgressView) findViewById(R.id.progress_view);
+        //ループだとinvalidateが効かない...
+        for(int i=0; i < 10; i++){
+            prview.invalidate();
+        }
     }
 }

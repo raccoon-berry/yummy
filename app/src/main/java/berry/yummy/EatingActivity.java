@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.fuetrek.fsr.FSRServiceEnum.BackendType;
@@ -69,6 +70,14 @@ public class EatingActivity extends Activity {
     private ProgressView prview = null;
 
     private int yummyCount;
+
+    private String[] star1_texts = new String[] {"今日のごはんもおいしいかな～", "もぐもぐ", "これはいったいなんですか？", "未知のあじ～♪", "ふがふが"};
+    private String[] star2_texts = new String[] {"今日のごはんもおいしいかな～", "もぐもぐ", "これはいったいなんですか？", "未知のあじ～♪", "ふがふが"};
+    private String[] star3_texts = new String[] {"いつものごはん！おいしい！", "やさしい味だね", "こっちもおいしそう～♪", "おもしろい見た目だね", "じっくり味わうよ！"};
+    private String[] star4_texts = new String[] {"今日のごはんはおいしいなぁ！", "これどうやってつくったの？", "もっと食べたいなー", "さすが！", "楽しくなってきた！"};
+    private String[] star5_texts = new String[] {"今日のごはんはすっごくおいしい！また作ってほしいなぁ！", "もうこれ絶対アンコール！", "うまい！うますぎる！", "あなたの料理は日本一！", "おかわりー！！"};
+
+    private int textPosition = 0;
 
     // FSRServiceの待ち処理でブロッキングする実装としている為、
     // UI更新を妨げないよう別スレッドとしている。
@@ -377,5 +386,35 @@ public class EatingActivity extends Activity {
 //        for(int i=0; i < 10; i++){
             prview.invalidate();
 //        }
+
+        // ここで画面を切り替える処理を入れる
+        ImageView eatingGirl =(ImageView) findViewById(R.id.eating_girl);
+        BootstrapButton fikidashi = (BootstrapButton) findViewById(R.id.fukidashi);
+        int starCount = this.yummyCount / (ResultActivity.MAX_COUNT / 5);
+        if (starCount > 5) {
+            starCount = 5;
+        } else if (starCount == 0) {
+            starCount = 1;
+        }
+        if (starCount == 1) {
+            fikidashi.setText(star1_texts[textPosition]);
+        } else if (starCount == 2) {
+            eatingGirl.setImageResource(R.drawable.normal_girl_face);
+            fikidashi.setText(star1_texts[textPosition]);
+        } else if (starCount == 3) {
+            eatingGirl.setImageResource(R.drawable.pretty_good_girl_face);
+            fikidashi.setText(star3_texts[textPosition]);
+        } else if (starCount == 4) {
+            eatingGirl.setImageResource(R.drawable.good_girl_face);
+            fikidashi.setText(star4_texts[textPosition]);
+        } else if (starCount == 5) {
+            eatingGirl.setImageResource(R.drawable.smile_girl_face);
+            fikidashi.setText(star5_texts[textPosition]);
+        }
+        textPosition++;
+        if (textPosition > 4) {
+            textPosition = 0;
+        }
+
     }
 }

@@ -6,7 +6,7 @@
     <string name="start_button">いただきます</string>
     <string name="history_button">Yummyの記録</string>
     <string name="title_activity_eating">ごはんのじかん</string>
-    <string name="end_button">ごちそうさまでした</string>
+    <string name="end_button">ごちそうさま</string>
     <string name="title_activity_result">ごちそうさま</string>
     <string name="to_top_button">TOPへ</string>
     <string name="title_activity_history">Yummyの記録</string>

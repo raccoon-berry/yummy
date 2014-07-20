@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.fuetrek.fsr.FSRServiceEnum.BackendType;
 import com.fuetrek.fsr.FSRServiceEnum.EventType;
 import com.fuetrek.fsr.FSRServiceEnum.Ret;
@@ -273,7 +274,7 @@ public class EatingActivity extends Activity {
         yummyCount = 0;
 
         // ごちそうさまボタン
-        Button endButton = (Button) findViewById(R.id.end_button);
+        BootstrapButton endButton = (BootstrapButton) findViewById(R.id.end_button);
         endButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

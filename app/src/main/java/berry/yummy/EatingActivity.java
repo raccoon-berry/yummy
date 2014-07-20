@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.fuetrek.fsr.FSRServiceEnum.BackendType;
 import com.fuetrek.fsr.FSRServiceEnum.EventType;
 import com.fuetrek.fsr.FSRServiceEnum.Ret;
@@ -66,6 +68,8 @@ public class EatingActivity extends Activity {
 
     private ProgressView prview = null;
 
+    private int yummyCount;
+
     // FSRServiceの待ち処理でブロッキングする実装としている為、
     // UI更新を妨げないよう別スレッドとしている。
     public class fsrController extends Thread implements FSRServiceEventListener {
@@ -91,23 +95,25 @@ public class EatingActivity extends Activity {
                     return;
                 }
                 String target = controller_.result_;
-                int count = 0;
                 for (String yummy : yummies) {
-                    count += (target.length() - target.replaceAll(yummy, "").length()) / yummy.length();
+                    yummyCount += (target.length() - target.replaceAll(yummy, "").length()) / yummy.length();
                 }
 
-                //進捗アイコンを表示
-                reDrawProgress();
+                if (controller_.carryOn) {
+                    //進捗アイコンを表示
+                    reDrawProgress();
+                } else {
 //停止時の処理
 //                // 結果を更新
 //                // FIXME これはテストコードです。
-//                int yummyCount = 20;
-//                updateEating(yummyCount, eatingId);
-//                Intent intent = new Intent(EatingActivity.this, ResultActivity.class);
-//                intent.putExtra("eatingId", eatingId);
-//                intent.putExtra("yummyCount", yummyCount);
-//                startActivity(intent);
-
+//                    int yummyCount = 20;
+                    Log.d("yummyCount", String.valueOf(yummyCount));
+                    updateEating(yummyCount, eatingId);
+                    Intent intent = new Intent(EatingActivity.this, ResultActivity.class);
+                    intent.putExtra("eatingId", eatingId);
+                    intent.putExtra("yummyCount", yummyCount);
+                    startActivity(intent);
+                }
             }
         };
 
@@ -265,9 +271,10 @@ public class EatingActivity extends Activity {
 
         controller_ = new fsrController();
         controller_.start();
+        yummyCount = 0;
 
         // ごちそうさまボタン
-        Button endButton = (Button) findViewById(R.id.end_button);
+        BootstrapButton endButton = (BootstrapButton) findViewById(R.id.end_button);
         endButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -367,8 +374,6 @@ public class EatingActivity extends Activity {
     public void reDrawProgress(){
         prview = (ProgressView) findViewById(R.id.progress_view);
         //ループだとinvalidateが効かない...
-        //for(int i=0; i < 10; i++){
-            prview.invalidate();
-        //}
+        prview.invalidate();
     }
 }

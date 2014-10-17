@@ -1,92 +1,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
-    xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff8c00"
+    android:background="#ffffff"
     android:orientation="vertical"
     tools:context="berry.yummy.EatingActivity">
 
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+    <TextView
+        android:id="@+id/result_top_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:text="@+string/eating_top_text"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="#696969"
+        android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="bottom">
+    <TextView
+        android:id="@+id/yummy_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_gravity="center_horizontal"
+        android:text="0"
+        android:textSize="250sp"
+        android:textColor="#696969"
+        android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/roof_repeat" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/roof_repeat" />
-
-            <view
-                android:layout_width="wrap_content"
-                android:layout_height="39dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                class="berry.yummy.ProgressView"
-                android:id="@+id/progress_view" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="5dp"
-                android:src="@drawable/normal_girl_face"
-                android:id="@+id/eating_girl"/>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/tsuno"/>
-
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/fukidashi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="-1px"
-                    android:layout_marginBottom="20dp"
-                    android:text="いただきます～"
-                    bootstrapbutton:bb_type="default"
-                    bootstrapbutton:be_roundedCorners="true"
-                    bootstrapbutton:bb_size="large"
-
-                    />
-            </LinearLayout>
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="@string/end_button"
-                android:id="@+id/end_button"
-                android:layout_gravity="center_horizontal"
-                bootstrapbutton:bb_type="danger"
-                bootstrapbutton:bb_roundedCorners="true"
-                android:onClick="onClickEnd"
-                />
-        </LinearLayout>
-    </FrameLayout>
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/end_button"
+        android:id="@+id/end_button"
+        android:layout_gravity="center_horizontal"
+        bootstrap:bb_type="success"
+        bootstrap:bb_roundedCorners="true"
+        android:onClick="onClickEnd"
+        />
 </LinearLayout>

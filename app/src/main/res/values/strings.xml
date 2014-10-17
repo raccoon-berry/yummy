@@ -3,14 +3,15 @@
 
     <string name="app_name">Yummy</string>
     <string name="action_settings">Settings</string>
-    <string name="start_button">いただきます</string>
-    <string name="history_button">Yummyの記録</string>
+    <string name="start_button">おいしいをカウントする</string>
+    <string name="history_button">これまでの記録</string>
     <string name="title_activity_eating">ごはんのじかん</string>
-    <string name="end_button">ごちそうさま</string>
+    <string name="end_button">カウント終了</string>
     <string name="title_activity_result">ごちそうさま</string>
     <string name="to_top_button">TOPへ</string>
     <string name="title_activity_history">Yummyの記録</string>
-    <string name="result_top_text">きょうのごはんは…</string>
+    <string name="eating_top_text">おいしいをカウント中</string>
+    <string name="result_top_text">きょうのごはんのおいしいカウント</string>
     <string name="result_regist_button">記録する</string>
     <string name="result_max_yummy_msg">最高においしいごはんだったよ！！</string>
     <string name="result_min_yummy_msg">まあまあかな？</string>

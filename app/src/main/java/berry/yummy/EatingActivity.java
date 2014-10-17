@@ -12,8 +12,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.fuetrek.fsr.FSRServiceEnum.BackendType;
@@ -55,7 +55,6 @@ class SyncObj{
 public class EatingActivity extends Activity {
 
     private Handler handler_;
-//    private TextView textResult_;
     private fsrController controller_ = new fsrController();
     private String[] yummies = {"美味","うま","うめ","おいし","旨","最高"};
 
@@ -67,18 +66,8 @@ public class EatingActivity extends Activity {
 
     private long eatingId;
 
-    private ProgressView prview = null;
-
+    // おいしいの回数
     private int yummyCount;
-    private int currentStarCount = 1;
-
-    private String[] star1_texts = new String[] {"今日のごはんもおいしいかな～", "もぐもぐ", "これはいったいなんですか？", "未知のあじ～♪", "ふがふが"};
-    private String[] star2_texts = new String[] {"今日のごはんもおいしいかな～", "もぐもぐ", "これはいったいなんですか？", "未知のあじ～♪", "ふがふが"};
-    private String[] star3_texts = new String[] {"いつものごはん！おいしい！", "やさしい味だね", "こっちもおいしそう～♪", "おもしろい見た目だね", "じっくり味わうよ！"};
-    private String[] star4_texts = new String[] {"今日のごはんはおいしいなぁ！", "これどうやってつくったの？", "もっと食べたいなー", "さすが！", "楽しくなってきた！"};
-    private String[] star5_texts = new String[] {"今日のごはんはすっごくおいしい！また作ってほしいなぁ！", "もうこれ絶対アンコール！", "うまい！うますぎる！", "あなたの料理は日本一！", "おかわりー！！"};
-
-    private int textPosition = 0;
 
     // FSRServiceの待ち処理でブロッキングする実装としている為、
     // UI更新を妨げないよう別スレッドとしている。
@@ -110,13 +99,11 @@ public class EatingActivity extends Activity {
                 }
 
                 if (controller_.carryOn) {
-                    //進捗アイコンを表示
-                    reDrawProgress();
+                    //カウントを再表示
+                    drawCountUp();
                 } else {
-//停止時の処理
-//                // 結果を更新
-//                // FIXME これはテストコードです。
-//                    int yummyCount = 20;
+                    //停止時の処理
+                    // 結果を更新
                     Log.d("yummyCount", String.valueOf(yummyCount));
                     updateEating(yummyCount, eatingId);
                     Intent intent = new Intent(EatingActivity.this, ResultActivity.class);
@@ -288,17 +275,8 @@ public class EatingActivity extends Activity {
         endButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // ここに聞き取りをSTOPする処理が入るはず
+                // 聞き取りをSTOP
                 controller_.sendStopSignal();
-
-//                // 結果を更新
-//                // FIXME これはテストコードです。
-//                int yummyCount = 20;
-//                updateEating(yummyCount, eatingId);
-//                Intent intent = new Intent(EatingActivity.this, ResultActivity.class);
-//                intent.putExtra("eatingId", eatingId);
-//                intent.putExtra("yummyCount", yummyCount);
-//                startActivity(intent);
             }
         });
 
@@ -308,8 +286,8 @@ public class EatingActivity extends Activity {
             this.eatingId = result;
         }
 
-        // デフォルト進捗
-        reDrawProgress();
+        // デフォルトカウント
+        drawCountUp();
     }
 
     private long insertEating() {
@@ -381,42 +359,9 @@ public class EatingActivity extends Activity {
         ad.show();
     }
 
-    public void reDrawProgress(){
-        prview = (ProgressView) findViewById(R.id.progress_view);
-
-        // ここで画面を切り替える処理を入れる
-        ImageView eatingGirl =(ImageView) findViewById(R.id.eating_girl);
-        BootstrapButton fikidashi = (BootstrapButton) findViewById(R.id.fukidashi);
-        int starCount = this.yummyCount / (ResultActivity.MAX_COUNT / 5);
-        for (int i = 0; i < starCount - currentStarCount; i++) {
-            prview.invalidate();
-        }
-        if (starCount > 5) {
-            starCount = 5;
-        } else if (starCount == 0) {
-            starCount = 1;
-        }
-        currentStarCount = starCount;
-        if (starCount == 1) {
-            fikidashi.setText(star1_texts[textPosition]);
-        } else if (starCount == 2) {
-            eatingGirl.setImageResource(R.drawable.normal_girl_face);
-            fikidashi.setText(star1_texts[textPosition]);
-        } else if (starCount == 3) {
-            eatingGirl.setImageResource(R.drawable.pretty_good_girl_face);
-            fikidashi.setText(star3_texts[textPosition]);
-        } else if (starCount == 4) {
-            eatingGirl.setImageResource(R.drawable.good_girl_face);
-            fikidashi.setText(star4_texts[textPosition]);
-        } else if (starCount == 5) {
-            eatingGirl.setImageResource(R.drawable.smile_girl_face);
-            fikidashi.setText(star5_texts[textPosition]);
-        }
-        textPosition++;
-        if (textPosition > 4) {
-            textPosition = 0;
-        }
-        Log.d("currentStar", String.valueOf(currentStarCount));
+    public void drawCountUp(){
+        TextView yummyCountView = (TextView) findViewById(R.id.yummy_count);
+        yummyCountView.setText(String.valueOf(yummyCount));
         Log.d("yummyCount", String.valueOf(yummyCount));
     }
 }

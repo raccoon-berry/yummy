@@ -22,8 +22,6 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 
 public class ResultActivity extends Activity {
 
-    // TODO 星5つになる回数、設定ファイルで持ちたい
-    public static int MAX_COUNT = 10;
     private long eatingId;
 
     @Override
@@ -35,36 +33,6 @@ public class ResultActivity extends Activity {
         this.eatingId = intent.getLongExtra("eatingId", 0);
         int yummyCount = intent.getIntExtra("yummyCount", 0);
 
-        // yummy度の算出
-        int starCount = yummyCount / (MAX_COUNT / 5);
-        if (starCount > 5) {
-            starCount = 5;
-        } else if (starCount == 0) {
-            starCount = 1;
-        }
-        LinearLayout starsLayout = (LinearLayout) findViewById(R.id.stars);
-        for (int i = 0; i < starCount - 1; i++) {
-            ImageView image = new ImageView(this);
-            image.setImageResource(R.drawable.heart145);
-//            image.setScaleType(ImageView.ScaleType.CENTER);
-            starsLayout.addView(image);
-        }
-
-        TextView msgText = (TextView) findViewById(R.id.result_msg_text);
-        ImageView resultGirlFace = (ImageView) findViewById(R.id.result_girl_face);
-        if (starCount == 1) {
-            msgText.setText(R.string.result_min_yummy_msg);
-            resultGirlFace.setImageResource(R.drawable.complaint_girl_face);
-        } else if (starCount == 2) {
-            resultGirlFace.setImageResource(R.drawable.normal_girl_face);
-        } else if (starCount == 3) {
-            resultGirlFace.setImageResource(R.drawable.pretty_good_girl_face);
-        } else if (starCount == 4) {
-            resultGirlFace.setImageResource(R.drawable.good_girl_face);
-        } else if (starCount == 5) {
-            msgText.setText(R.string.result_max_yummy_msg);
-            resultGirlFace.setImageResource(R.drawable.smile_girl_face);
-        }
 
         // TOPへボタン
         BootstrapButton topButton = (BootstrapButton) findViewById(R.id.to_top_button);

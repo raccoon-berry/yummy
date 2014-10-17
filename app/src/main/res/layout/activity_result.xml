@@ -4,100 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff8c00"
+    android:background="#ffffff"
     android:orientation="vertical"
     tools:context="berry.yummy.ResultActivity">
 
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+    <TextView
+        android:id="@+id/result_top_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:text="@+string/result_top_text"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="#696969"
+        android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="bottom">
+    <TextView
+        android:id="@+id/yummy_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:text="0"
+        android:textSize="250sp"
+        android:textColor="#696969"
+        android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/roof_repeat" />
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/result_add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="記録する"
+        bootstrapbutton:bb_roundedCorners="true"
+        bootstrapbutton:bb_type="danger" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/roof_repeat" />
-
-            <TextView
-                android:id="@+id/result_top_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="25dp"
-                android:text="@+string/result_top_text"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ffffe0"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/stars"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/heart145"/>
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="85dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/normal_girl_face"
-                android:id="@+id/result_girl_face"
-                android:layout_margin="20dp"/>
-
-            <TextView
-                android:id="@+id/result_msg_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@+string/result_normal_yummy_msg"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#ffffe0"
-                android:textStyle="bold" />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/result_add_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="20dp"
-                android:text="記録する"
-                bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_type="danger" />
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/to_top_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/to_top_button"
-                bootstrapbutton:bb_roundedCorners="true"
-                bootstrapbutton:bb_type="warning" />
-
-        </LinearLayout>
-
-    </FrameLayout>
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/to_top_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="@string/to_top_button"
+        bootstrapbutton:bb_roundedCorners="true"
+        bootstrapbutton:bb_type="warning" />
 
 </LinearLayout>

@@ -125,7 +125,7 @@ public class EatingActivity extends Activity {
 
                 // TODO apiキーをコミットしないこと
                 // 別途発行されるAPIキーを設定してください(以下の値はダミーです)
-                construct.setApiKey("70473974327a764c314337636a624e5131326a6b332e6d4257367446344d30354d745064572e6452696132");
+                construct.setApiKey("48507579353444774531344e72754f4a453658316c2f673239707243797841713546642f717a3565746c2e");
 
                 construct.setSpeechTime(10000);
                 construct.setRecordSize(240);

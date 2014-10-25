@@ -1,23 +1,26 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#f0e68c"
-    tools:context="berry.yummy.HistoryActivity">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/to_top_button"
-        android:id="@+id/history_to_top_button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        tools:context=".HistoryActivity">
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_alignParentLeft="true"
-        android:layout_above="@+id/history_to_top_button" />
+        android:id="@+id/listView" />
 
-</RelativeLayout>
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/to_top_button"
+        android:id="@+id/history_to_top_button"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        bootstrap:bb_size="large"
+        bootstrap:bb_type="warning"
+        bootstrap:bb_roundedCorners="true"/>
+</LinearLayout>
